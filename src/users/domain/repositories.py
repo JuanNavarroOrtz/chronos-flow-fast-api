@@ -1,0 +1,13 @@
+from typing import Protocol
+
+from src.users.domain.entities import UserEntity
+
+
+class UserRepository(Protocol):
+    async def add(self, user: UserEntity) -> UserEntity: ...
+
+    async def get(self, user_id: int) -> UserEntity | None: ...
+
+    async def get_by_email(self, email: str) -> UserEntity | None: ...
+
+    async def count(self) -> int: ...
